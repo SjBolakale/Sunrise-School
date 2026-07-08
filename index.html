@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sunrise School Ilorin</title>
+  <style>
+    :root {
+      --primary: #1f5d8a;
+      --secondary: #f7a71b;
+      --surface: #ffffff;
+      --surface-dark: #f4f7fb;
+      --text: #1a1a1a;
+      --muted: #5f6c7b;
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text);
+      background: #eef4fb;
+      line-height: 1.6;
+    }
+
+    header {
+      background: radial-gradient(circle at top left, rgba(255,255,255,0.08), transparent 32%),
+        linear-gradient(180deg, #0f2d4a 0%, #173c65 100%);
+      color: #f4f7fb;
+      padding: 52px 24px 88px;
+      text-align: center;
+      display: grid;
+      gap: 28px;
+    }
+
+    header .hero-meta {
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      font-size: 0.82rem;
+      color: rgba(244,247,251,0.75);
+      margin-bottom: 2px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: clamp(2.75rem, 5vw, 4.4rem);
+      letter-spacing: -0.06em;
+      line-height: 0.95;
+      font-weight: 700;
+      max-width: 950px;
+      margin-inline: auto;
+    }
+
+    header p {
+      margin: 18px auto 0;
+      max-width: 720px;
+      font-size: 1.05rem;
+      color: rgba(244,247,251,0.88);
+    }
+
+    .button-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 30px;
+      padding: 14px 28px;
+      background: var(--secondary);
+      color: #1a1a1a;
+      border: none;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .button-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 32px rgba(31,93,138,0.18);
+    }
+
+    .top-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .top-nav a {
+      color: rgba(255,255,255,0.92);
+      text-decoration: none;
+      padding: 10px 18px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 999px;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .top-nav a:hover {
+      background: rgba(255,255,255,0.12);
+      transform: translateY(-1px);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .hero-actions .button-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      color: white;
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 999px;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .hero-actions .button-secondary:hover {
+      background: rgba(255,255,255,0.12);
+      transform: translateY(-1px);
+    }
+
+    .section-gallery,
+    .facility-grid,
+    .info-grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .profile-card,
+    .gallery-card,
+    .facility-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 24px 48px rgba(31,93,138,0.08);
+    }
+
+    .profile-card img,
+    .gallery-card img,
+    .facility-card img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+    }
+
+    .profile-card div,
+    .gallery-card div,
+    .facility-card div {
+      padding: 22px;
+    }
+
+    .profile-card h3,
+    .facility-card h3,
+    .gallery-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.25rem;
+    }
+
+    .profile-card p,
+    .facility-card p,
+    .gallery-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .info-grid {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .info-box {
+      background: var(--surface-dark);
+      border-radius: 18px;
+      padding: 22px;
+    }
+
+    .info-box h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 1.15rem;
+    }
+
+    .info-box p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .contact-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 24px 48px rgba(31,93,138,0.08);
+    }
+
+    .contact-card h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    .contact-card address,
+    .contact-card p {
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+
+    .contact-card a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .contact-card a:hover {
+      text-decoration: underline;
+    }
+
+    .section-title + .grid,
+    .section-title + .section-gallery,
+    .section-title + .info-grid {
+      margin-top: 24px;
+    }
+
+    .facility-grid {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .section-gallery {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .nav-anchor {
+      position: relative;
+      top: -90px;
+      visibility: hidden;
+    }
+
+    @media (max-width: 720px) {
+      .top-nav {
+        gap: 12px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .section-gallery,
+      .facility-grid,
+      .info-grid {
+        gap: 18px;
+      }
+    }
+
+    .container {
+      width: min(1150px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 48px 0;
+    }
+
+    .grid {
+      display: grid;
+      gap: 32px;
+    }
+
+    .cards {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 24px 48px rgba(31,93,138,0.08);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 14px;
+      font-size: 1.35rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .highlight {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .section-title {
+      text-align: center;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    .section-title p {
+      margin: 10px auto 0;
+      max-width: 640px;
+      color: var(--muted);
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 18px;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px;
+      background: var(--surface-dark);
+      border-radius: 16px;
+    }
+
+    .feature-list strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    .testimonial {
+      background: var(--primary);
+      color: white;
+      border-radius: var(--radius);
+      padding: 32px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .testimonial p {
+      margin: 0;
+      font-size: 1.1rem;
+      max-width: 780px;
+    }
+
+    .testimonial cite {
+      display: block;
+      margin-top: 12px;
+      font-size: 0.98rem;
+      opacity: 0.85;
+    }
+
+    footer {
+      background: #1f2f44;
+      color: #d4dcf0;
+      padding: 36px 24px;
+      text-align: center;
+    }
+
+    footer p {
+      margin: 8px 0 0;
+      color: #a9b7cc;
+    }
+
+    @media (max-width: 720px) {
+      header {
+        padding: 36px 18px 52px;
+      }
+
+      .container {
+        padding: 32px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="hero-meta">Sunrise School • Ilorin, Kwara State</div>
+      <h1>Academic Excellence with Character and Care</h1>
+      <p>Trusted by parents for strong academics, structured discipline, and a safe growth environment for children from Primary 1 through SS2.</p>
+      <nav class="top-nav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#programs">Programs</a>
+        <a href="#classes">Classes</a>
+        <a href="#facilities">Facilities</a>
+        <a href="#people">People</a>
+        <a href="#admissions">Admissions</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="hero-actions">
+        <a href="#admissions" class="button-primary">Apply Now</a>
+        <a href="#facilities" class="button-secondary">View Facilities</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div id="home" class="nav-anchor"></div>
+    <section class="container">
+      <div class="grid cards">
+        <article class="card">
+          <h3>Our Mission</h3>
+          <p>We aim to cultivate curiosity, confidence, and creativity by combining engaging academics with real-world skills.</p>
+        </article>
+        <article class="card">
+          <h3>Academic Excellence</h3>
+          <p>Personalized learning plans, experienced teachers, and a strong focus on critical thinking ensure every learner thrives.</p>
+        </article>
+        <article class="card">
+          <h3>Community Focus</h3>
+          <p>Inclusive activities, mentorship programs, and service learning help students build character and meaningful connections.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container" id="programs">
+      <div class="section-title">
+/        <h2>Featured Programs</h2>
+        <p>Choose the path that fits your child best: from advanced STEM studies to arts, leadership, and wellness.</p>
+      </div>
+      <div class="grid cards">
+        <article class="card">
+          <h3>STEM Lab</h3>
+          <p>Hands-on engineering, coding, robotics, and science inquiry designed to prepare students for future innovation.</p>
+        </article>
+        <article class="card">
+          <h3>Creative Arts</h3>
+          <p>Visual art, drama, music, and design classes that inspire expression and boost confidence.</p>
+        </article>
+        <article class="card">
+          <h3>Leadership Club</h3>
+          <p>Service projects, peer mentoring, and public speaking opportunities to develop future leaders.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container" id="classes">
+      <div class="section-title">
+        <h2>School Classes</h2>
+        <p>We offer a complete primary program and a strong secondary curriculum with specialized tracks for students to grow.</p>
+      </div>
+      <div class="grid cards">
+        <article class="card">
+          <h3>Primary School</h3>
+          <p>Our Primary program spans Primary 1 through Primary 5 with a nurturing learning environment for young learners.</p>
+          <p class="highlight">Classes:</p>
+          <ul class="feature-list" style="margin-top: 16px;">
+            <li><strong>Primary 1</strong> – Foundation skills, reading, numeracy, and creative learning</li>
+            <li><strong>Primary 2</strong> – Building confidence in literacy and numeracy</li>
+            <li><strong>Primary 3</strong> – Expanding science, social studies, and arts</li>
+            <li><strong>Primary 4</strong> – Stronger skills in mathematics and language arts</li>
+            <li><strong>Primary 5</strong> – Preparatory learning for junior secondary school</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Secondary School</h3>
+          <p>Secondary classes range from JSS1 to SS2, offering a broad curriculum and specialized pathways in senior classes.</p>
+          <p class="highlight">Tracks:</p>
+          <ul class="feature-list" style="margin-top: 16px;">
+            <li><strong>Art Class</strong> – Visual arts, literature, music, and creative design.</li>
+            <li><strong>Science Class</strong> – Physics, chemistry, biology, and mathematics with practical labs.</li>
+            <li><strong>Commercial Class</strong> – Business studies, accounting, economics, and entrepreneurship.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="container" id="people">
+      <div class="section-title">
+        <h2>Leadership & Achievers</h2>
+        <p>Meet the team guiding our school and the students who represent our academic excellence.</p>
+      </div>
+      <div class="section-gallery">
+        <article class="profile-card">
+          <img src="Proprieto 1r.jpg" alt="Proprietor of the school">
+          <div>
+            <h3>Proprietor</h3>
+            <p>Mrs. Remi Adeyemi leads the school with a vision for community-focused education and strong values.</p>
+          </div>
+        </article>
+        <article class="profile-card">
+          <img src="Principal.jpg" alt="Head of school">
+          <div>
+            <h3>Head of School</h3>
+            <p>Mr. Osain Lawan is committed to student wellbeing, academic success, and a safe learning environment.</p>
+          </div>
+        </article>
+        <article class="profile-card">
+          <img src="Best Student.jpg" alt="Best student of the year">
+          <div>
+            <h3>Best Student of the Year</h3>
+            <p>Fatimah Imam achieved top honors through dedication, leadership, and excellence across academics and sports.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="container" id="facilities">
+      <div class="section-title">
+        <h2>Facilities & Campus Life</h2>
+        <p>Our campus supports students with modern classrooms, secure transport, sports fields, and technology-rich learning spaces.</p>
+      </div>
+      <div class="facility-grid">
+        <article class="facility-card">
+          <img src="Class roo.jpg" alt="School classroom">
+          <div>
+            <h3>Classrooms</h3>
+            <p>Bright, well-equipped classrooms create a comfortable environment for learning across all class levels.</p>
+          </div>
+        </article>
+        <article class="facility-card">
+          <img src="School Bus.jpg" alt="School bus transport">
+          <div>
+            <h3>School Bus</h3>
+            <p>Safe school bus routes are available to help students travel to and from school reliably.</p>
+          </div>
+        </article>
+        <article class="facility-card">
+          <img src="School Facilities.jpg" alt="Sports facilities">
+          <div>
+            <h3>Sports Facilities</h3>
+            <p>Students enjoy football, athletics, indoor games, and physical education in our sports spaces.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="container" id="admissions">
+      <div class="section-title">
+        <h2>Admissions</h2>
+        <p>Learn how to apply, the admission requirements, and the support we provide to new students and families.</p>
+      </div>
+      <div class="info-grid">
+        <article class="info-box">
+          <h3>How to Apply</h3>
+          <p>Submit an application form, complete the entrance assessment, and attend a short interview with our admission team.</p>
+        </article>
+        <article class="info-box">
+          <h3>Requirements</h3>
+          <p>Birth certificate, previous school records, passport photograph, and a parent/guardian consent letter are required.</p>
+        </article>
+        <article class="info-box">
+          <h3>Open Days</h3>
+          <p>Visitors are welcome during our school open days. Schedule a guided tour to meet teachers and see the campus.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container" id="contact">
+      <div class="section-title">
+        <h2>Contact & Enquiries</h2>
+        <p>Parents, students, and prospective families can reach out for admission support, school visits, and general enquiries.</p>
+      </div>
+      <div class="contact-card">
+        <h3>Contact Information</h3>
+        <address>Sunrise School Ilorin • Plot 17 • BLK 47 TPS 235, Mandate Area, Ilorin, Kwara State</address>
+        <p>Phone: <a href="tel:+234 7019099999">+234 7019099999</a></p>
+        <p>Email: <a href="mailto:admissions@ssi.edu">admissions@ssi.edu</a></p>
+        <p>Office Hours: Monday to Friday, 8:00 AM – 4:00 PM</p>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="section-title">
+        <h2>Why Families Choose Us</h2>
+        <p>We balance academic rigor with well-being through small classes, modern facilities, and a supportive campus.</p>
+      </div>
+      <ul class="feature-list">
+        <li>
+          <div>
+            <strong>Small Class Size</strong>
+            <span>Average 18 students per classroom for more focused instruction and stronger student-teacher relationships.</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Flexible Learning</strong>
+            <span>Project-based lessons, digital tools, and personalized support for different learning styles.</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>After-School Care</strong>
+            <span>Safe enrichment programs in sports, arts, and study support to keep students engaged beyond school hours.</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="container">
+      <div class="testimonial">
+        <p>"Sunrise School Ilorin has been a wonderful fit for our family. The teachers are invested, the lessons are engaging, and our child feels confident and excited to learn each day."</p>
+        <cite>— Mrs Abdullah, parent</cite>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p> Sunrise School Ilorin • Plot 44 • BLK 14 TPS 239, Mandate Area, Ilorin, Kwara State</p>
+      <p>Call us at +234 - 7019099999    • Email admissions@ssi.edu</p>
+    </div>
+  </footer>
+</body>
+</html>
